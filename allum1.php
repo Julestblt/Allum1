@@ -139,7 +139,8 @@
             echo "IA removed 2 match(es)\n";
             checkWin($matches, $turn);
         }
-        // IF MATCHES == 9, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE
+        // IF MATCHES == 9, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE (IF THE PLAYER DOES NOT THROW THE GAME)
+        // IF THE PLAYER THROW THE GAME THERE IS 3 CONDITIONS BELOW TO STILL BEAT THE PLAYER
         elseif($matches == 8)
         {
             $matches = $matches - 3;
@@ -161,6 +162,12 @@
             echo "IA removed 1 match(es)\n";
             checkWin($matches, $turn);
         }
+        // IF MATCHES == 5, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE
+        // EXAMPLE : 
+        // 5 - 1 = 4 - 3 = 1
+        // 5 - 2 = 3 - 2 = 1
+        // 5 - 1 = 4 - 3 = 1
+        // ONLY 1 MATCH REMAINS SO THE IA MUST PICK THIS LAST ONE
         elseif($matches == 4)
         {
             $matches = $matches - 3;
