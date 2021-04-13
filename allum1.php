@@ -125,6 +125,42 @@
         {
             IATurn($matches, $turn);
         }
+        elseif($matches == 11)
+        {
+            $matches = $matches - 2;
+            sleep(1);
+            echo "IA removed 3 match(es)\n";
+            checkWin($matches, $turn);
+        }
+        elseif($matches == 10)
+        {
+            $matches = $matches - 1;
+            sleep(1);
+            echo "IA removed 2 match(es)\n";
+            checkWin($matches, $turn);
+        }
+        // IF MATCHES == 9, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE
+        elseif($matches == 8)
+        {
+            $matches = $matches - 3;
+            sleep(1);
+            echo "IA removed 3 match(es)\n";
+            checkWin($matches, $turn);
+        }
+        elseif($matches == 7)
+        {
+            $matches = $matches - 2;
+            sleep(1);
+            echo "IA removed 2 match(es)\n";
+            checkWin($matches, $turn);
+        }
+        elseif($matches == 6)
+        {
+            $matches = $matches - 1;
+            sleep(1);
+            echo "IA removed 1 match(es)\n";
+            checkWin($matches, $turn);
+        }
         elseif($matches == 4)
         {
             $matches = $matches - 3;
