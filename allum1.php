@@ -41,11 +41,15 @@
     {
         if($matches == 0 && $turn == "IA")
         {
-            exit("I lost ... snif ... but I'll get you next time !!");
+            echo "I lost ... snif ... but I'll get you next time !!";
+            sleep(2);
+            exit;
         }
         elseif($matches == 0 && $turn == "PLAYER")
         {
-            exit("You lost , too bad ...");
+            echo "You lost , too bad ...";
+            sleep(2);
+            exit;
         }
         else
         {
@@ -55,6 +59,7 @@
 
     function defineTurn($turn, $matches)
     {
+        sleep(1);
         echo "There is $matches matches !\n";
         for($i = 0; $i < $matches; $i++)
         {
@@ -125,77 +130,76 @@
         {
             IATurn($matches, $turn);
         }
-        elseif($matches == 11)
+
+        switch($matches)
         {
-            $matches = $matches - 2;
-            sleep(1);
-            echo "IA removed 3 match(es)\n";
-            checkWin($matches, $turn);
+            case 11:
+                $matches = $matches - 2;
+                sleep(2);
+                echo "IA removed 3 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            case 10:
+                $matches = $matches - 1;
+                sleep(2);
+                echo "IA removed 2 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+
+            // IF MATCHES == 9, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE (IF THE PLAYER DOES NOT THROW THE GAME)
+            // IF THE PLAYER THROW THE GAME THERE IS 3 CONDITIONS BELOW TO STILL BEAT THE PLAYER
+
+            case 8:
+                $matches = $matches - 3;
+                sleep(2);
+                echo "IA removed 3 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            case 7:
+                $matches = $matches - 2;
+                sleep(2);
+                echo "IA removed 2 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            case 6:
+                $matches = $matches - 1;
+                sleep(2);
+                echo "IA removed 1 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+
+            // IF MATCHES == 5, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE
+            // EXAMPLE : 
+            // 5 - 1 = 4 - 3 = 1
+            // 5 - 2 = 3 - 2 = 1
+            // 5 - 1 = 4 - 3 = 1
+            // ONLY 1 MATCH REMAINS SO THE IA MUST PICK THIS LAST ONE
+
+            case 4:
+                $matches = $matches - 3;
+                sleep(2);
+                echo "IA removed 3 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            case 3:
+                $matches = $matches - 2;
+                sleep(2);
+                echo "IA removed 2 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            case 2:
+                $matches = $matches - 1;
+                sleep(2);
+                echo "IA removed 1 match(es)\n";
+                checkWin($matches, $turn);
+                break;
+            default:
+                $matches = $matches - $rdmint;
+                sleep(2);
+                echo "IA removed $rdmint match(es)\n";
+                checkWin($matches, $turn);
         }
-        elseif($matches == 10)
-        {
-            $matches = $matches - 1;
-            sleep(1);
-            echo "IA removed 2 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        // IF MATCHES == 9, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE (IF THE PLAYER DOES NOT THROW THE GAME)
-        // IF THE PLAYER THROW THE GAME THERE IS 3 CONDITIONS BELOW TO STILL BEAT THE PLAYER
-        elseif($matches == 8)
-        {
-            $matches = $matches - 3;
-            sleep(1);
-            echo "IA removed 3 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        elseif($matches == 7)
-        {
-            $matches = $matches - 2;
-            sleep(1);
-            echo "IA removed 2 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        elseif($matches == 6)
-        {
-            $matches = $matches - 1;
-            sleep(1);
-            echo "IA removed 1 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        // IF MATCHES == 5, THE PLAYER CAN ENTER A NUMBER BETWEEN 1 AND 3 AND THE IA WILL AUTOMATICLY LOSE
-        // EXAMPLE : 
-        // 5 - 1 = 4 - 3 = 1
-        // 5 - 2 = 3 - 2 = 1
-        // 5 - 1 = 4 - 3 = 1
-        // ONLY 1 MATCH REMAINS SO THE IA MUST PICK THIS LAST ONE
-        elseif($matches == 4)
-        {
-            $matches = $matches - 3;
-            sleep(1);
-            echo "IA removed 3 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        elseif ($matches == 3)
-        {
-            $matches = $matches - 2;
-            sleep(1);
-            echo "IA removed 2 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        elseif($matches == 2)
-        {
-            $matches = $matches - 1;
-            sleep(1);
-            echo "IA removed 1 match(es)\n";
-            checkWin($matches, $turn);
-        }
-        else
-        {
-            $matches = $matches - $rdmint;
-            sleep(1);
-            echo "IA removed $rdmint match(es)\n";
-            checkWin($matches, $turn);
-        }
+
     }
 
 init($matches);
