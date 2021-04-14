@@ -136,13 +136,13 @@
             case 11:
                 $matches = $matches - 2;
                 sleep(2);
-                echo "IA removed 3 match(es)\n";
+                echo "IA removed 2 match(es)\n";
                 checkWin($matches, $turn);
                 break;
             case 10:
                 $matches = $matches - 1;
                 sleep(2);
-                echo "IA removed 2 match(es)\n";
+                echo "IA removed 1 match(es)\n";
                 checkWin($matches, $turn);
                 break;
 
